@@ -10,3 +10,9 @@ Currently, two official plugins are available:
 <h1>To run this app </h1>
 <h4>type on terminal</h4>
 <h3> npm run dev</h3>
+
+installed at backend
+
+1. express
+2. nodemon
+3. mongoose
