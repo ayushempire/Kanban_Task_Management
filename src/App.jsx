@@ -4,7 +4,6 @@ import Navbar from "./Screens/Navbar";
 function App() {
   return (
     <div>
-      <Navbar />
       <Home />
     </div>
   );
