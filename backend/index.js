@@ -4,13 +4,16 @@ import express from "express";
 // importing mongoose
 import mongoose from "mongoose";
 
+import mongoDB from "./connection.js";
+mongoDB();
+
 // creating instance of express to app
 const app = express();
 
 // selecting port on that we want to run bakend
 const port = 5000;
 
-// mongodb url
+//  mongodb url
 const mongoURL =
   "mongodb+srv://ayushempire03:kanbanapp@kanbanapp.ympxhwn.mongodb.net/kanban_appretryWrites=true&w=majority";
 
