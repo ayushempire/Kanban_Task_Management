@@ -14,7 +14,7 @@ export default function HomeNavbar() {
       <nav className="navbar navbar-expand-lg bg-body-tertiary ">
         <div className="container-fluid ">
           <Link className="navbar-brand" to="#">
-            <img src={kmslogo} width="250" height="80" />
+            <img src={kmslogo} width="250" height="50" />
           </Link>
           <button
             className="navbar-toggler"
@@ -34,7 +34,7 @@ export default function HomeNavbar() {
             <div className="me-auto"></div>
             <div>
               <button
-                className="btn btn-outline-dark text-warning bg-white fw-bold"
+                className="btn btn-outline-dark text-warning bg-white fw-bold me-4"
                 type="button"
                 onClick={handleLogin}
               >
