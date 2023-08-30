@@ -17,28 +17,35 @@ export default function HomePage() {
     console.log();
     if (signup.email === "" || signup.password === "") {
       alert("fill the credentials");
-    } else {
-      localStorage.setItem("user", JSON.stringify(signup));
     }
+    // else {
+    //   localStorage.setItem("user", JSON.stringify(signup));
+    // }
 
     // fucntion to export data on mongodb
-    const responce = await fetch("http://localhost:5000/api/createuser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: signup.email,
-        password: signup.password,
-      }),
-    });
-    const json = await responce.json();
-    console.log(json);
-    if (!json.success) {
-      alert("enter valid credentials");
-    }
-    if (json.success) {
-      alert("signup successful");
+    try {
+      const responce = await fetch("http://localhost:5000/api/createuser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: signup.email,
+          password: signup.password,
+        }),
+      });
+      const json = await responce.json();
+      console.log(json);
+      if (!json.success) {
+        alert("enter valid credentials");
+      }
+      if (json.success) {
+        alert("signup successful");
+        navigate("/Login");
+      }
+    } catch {
+      alert("user saved localy");
+      localStorage.setItem("user", JSON.stringify(signup));
       navigate("/Login");
     }
   };
