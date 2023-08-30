@@ -41,12 +41,12 @@ export default function HomePage() {
       }
       if (json.success) {
         alert("signup successful");
-        navigate("/Login");
+        navigate("/Boards");
       }
     } catch {
       alert("user saved localy");
       localStorage.setItem("user", JSON.stringify(signup));
-      navigate("/Login");
+      navigate("/Boards");
     }
   };
 
