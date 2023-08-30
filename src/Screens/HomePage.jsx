@@ -12,18 +12,33 @@ export default function HomePage() {
   // page navigator
   const navigate = useNavigate();
 
-  // handle signup funcion
-
-  // const onChange = (e) => {
-  //   setsignup( {e.targe.name : e.target.value} );
-  // };
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     console.log();
     if (signup.email === "" || signup.password === "") {
       alert("fill the credentials");
     } else {
       localStorage.setItem("user", JSON.stringify(signup));
+    }
+
+    // fucntion to export data on mongodb
+    const responce = await fetch("http://localhost:5000/api/createuser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        eamil: signup.email,
+        password: signup.password,
+      }),
+    });
+    const json = await responce.json();
+    console.log(json);
+    if (!json.success) {
+      alert("enter valid credentials");
+    }
+    if (json.success) {
+      alert("signup successful");
       navigate("/Login");
     }
   };

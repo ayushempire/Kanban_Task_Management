@@ -1,26 +1,27 @@
-// importing express from express
-import express from "express";
+const express = require("express");
+const mongoDB = require("./connection");
+const cors = require("cors");
 
-// importing mongodb function from connextions
-import mongoDB from "./connection.js";
-
-// creating instance of express to app
 const app = express();
 
 mongoDB();
-// selecting port on that we want to run bakend
 const port = 5000;
 
 // todo : Middleware:
-app.use(express.json());
-app.use((req, res, next) => {
-  console.log(req.path, req.method);
-  next();
-});
-
 // todo:  Routes app.get method
 app.get("/", (req, res) => {
   res.send("hello world");
+});
+app.use(express.json());
+app.use(cors());
+app.use("/api", require("./Routes/CreateUser"));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
 });
 
 // app.listen method

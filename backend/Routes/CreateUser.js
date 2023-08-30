@@ -1,11 +1,18 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
+const User = require("../Models/User");
 
-export default function CreateUser() {
-  router.post("/CreateUser", (req, res) => {
+router.post("/createuser", async (req, res) => {
+  try {
+    await User.create({
+      email: req.body.email,
+      password: req.body.password,
+    });
     res.json({ success: true });
-  });
-  module.exports = router;
-}
+  } catch (error) {
+    console.log(error);
+    res.json({ seccess: false });
+  }
+});
 
-module.exports = CreateUser;
+module.exports = router;

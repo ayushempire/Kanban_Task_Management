@@ -1,11 +1,10 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-import mongoose from "mongoose";
 const mongoURL =
-  "mongodb+srv://ayushempire03:kanbanapp@kanbanapp.ympxhwn.mongodb.net/kanban_appretryWrites=true&w=majority";
+  "mongodb+srv://ayushempire03:kanbanapp@kanbanapp.ympxhwn.mongodb.net/kanban_app?retryWrites=true&w=majority";
 
 // // mongodb connection
-export default function mongoDB() {
+const mongoDB = () => {
   mongoose
     .connect(mongoURL, { useNewUrlParser: true })
 
@@ -15,7 +14,6 @@ export default function mongoDB() {
     .catch((error) => {
       console.log(error);
     });
-}
+};
 
-// module.exports = mongoDB;
-// import React from "react";
+module.exports = mongoDB;
