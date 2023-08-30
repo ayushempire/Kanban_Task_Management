@@ -28,7 +28,7 @@ export default function HomePage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        eamil: signup.email,
+        email: signup.email,
         password: signup.password,
       }),
     });
