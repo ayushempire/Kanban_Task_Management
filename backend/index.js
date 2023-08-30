@@ -1,34 +1,24 @@
 // importing express from express
 import express from "express";
 
-// importing mongoose
-import mongoose from "mongoose";
-
+// importing mongodb function from connextions
 import mongoDB from "./connection.js";
-mongoDB();
 
 // creating instance of express to app
 const app = express();
 
+mongoDB();
 // selecting port on that we want to run bakend
 const port = 5000;
 
-//  mongodb url
-const mongoURL =
-  "mongodb+srv://ayushempire03:kanbanapp@kanbanapp.ympxhwn.mongodb.net/kanban_appretryWrites=true&w=majority";
+// todo : Middleware:
+app.use(express.json());
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
+});
 
-// mongodb connection
-await mongoose
-  .connect(mongoURL, { useNewUrlParser: true })
-
-  .then(() => {
-    console.log("connected successfully");
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-
-// app.get method
+// todo:  Routes app.get method
 app.get("/", (req, res) => {
   res.send("hello world");
 });
