@@ -8,7 +8,7 @@ export default function Column() {
   return (
     <div
       className="Column_main d-flex flex-column gap-2"
-      style={{ width: 290, minWidth: "min-content" }}
+      style={{ width: "300px", minWidth: "min-content" }}
     >
       <div className="Column_top d-flex">
         <div className="Column_title fw-bold flex-fill ">
@@ -23,6 +23,16 @@ export default function Column() {
           overflowY: "auto",
         }}
       >
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
         <Card />
       </div>
     </div>

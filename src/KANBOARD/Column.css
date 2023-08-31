@@ -1,7 +1,7 @@
 @media (max-width: 767px) {
-  .Card {
+  .ColunCard {
     height: min-content !important;
-    width: 400px;
+    width: min-content;
     overflow-x: auto;
   }
 }
