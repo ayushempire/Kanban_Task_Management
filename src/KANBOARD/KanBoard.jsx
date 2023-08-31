@@ -1,44 +1,32 @@
 import React from "react";
-import styled from "styled-components";
 import BoardNav from "./BoardNav";
 import Column from "./Column";
 
 export default function KanBoard() {
   return (
-    <Kanboard>
+    <div
+      className=" mtauto Kanboard w-auto height-100 d-flex flex-column"
+      style={{ width: "100%", height: "100vh" }}
+    >
       <BoardNav />
-      <App_outer>
-        <App_boards>
+      <div
+        className="App_boards_outer mtauto d-flex  flex-fill justify-content-center"
+        style={{
+          overflowX: "auto",
+          width: "100%",
+          overflowY: "auto",
+          height: "100%",
+        }}
+      >
+        <div
+          className="App_boards d-flex flex-column flex-md-row flex-lg-row gap-4 p-3 "
+          style={{ minWidth: "min-content", height: "min-content" }}
+        >
           <Column />
           <Column />
           <Column />
-          <Column />
-          <Column />
-          <Column />
-          <Column />
-        </App_boards>
-      </App_outer>
-    </Kanboard>
+        </div>
+      </div>
+    </div>
   );
 }
-
-const Kanboard = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-
-const App_boards = styled.div`
-  min-width: min-content;
-  display: flex;
-  padding-left: 2rem;
-  padding-top: 2rem;
-  gap: 30px;
-`;
-
-const App_outer = styled.div`
-  flex: 1;
-  width: 100%;
-  overflow-x: auto;
-`;
