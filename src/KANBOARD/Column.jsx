@@ -2,6 +2,7 @@ import React from "react";
 import { styled } from "styled-components";
 import { MoreHorizontal } from "react-feather";
 import "./Column.css";
+import Card from "./Card";
 
 export default function Column() {
   return (
@@ -16,36 +17,13 @@ export default function Column() {
         <MoreHorizontal />
       </div>
       <div
-        className="Card bg-light d-flex flex-row flex-md-column flex-lg-column ps-2"
+        className="ColunCard bg-light d-flex flex-row flex-md-column flex-lg-column p-1  gap-2 border-2 border-bottom"
         style={{
           height: "75vh",
           overflowY: "auto",
         }}
       >
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
-        <H1>Card</H1>
+        <Card />
       </div>
     </div>
   );
