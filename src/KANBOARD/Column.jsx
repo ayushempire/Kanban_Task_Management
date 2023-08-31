@@ -15,7 +15,13 @@ export default function Column() {
         </div>
         <MoreHorizontal />
       </div>
-      <div className="Card bg-light d-flex flex-row flex-md-column flex-lg-column ps-2">
+      <div
+        className="Card bg-light d-flex flex-row flex-md-column flex-lg-column ps-2"
+        style={{
+          height: "75vh",
+          overflowY: "auto",
+        }}
+      >
         <H1>Card</H1>
         <H1>Card</H1>
         <H1>Card</H1>

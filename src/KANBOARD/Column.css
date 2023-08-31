@@ -1,7 +1,7 @@
-/* @media (max-width: 768px) {
+@media (max-width: 767px) {
   .Card {
     height: min-content !important;
-    width: 100%;
+    width: 400px;
     overflow-x: auto;
   }
-} */
+}

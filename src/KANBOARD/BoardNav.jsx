@@ -7,8 +7,8 @@ export default function BoardNav() {
   return (
     <Navbar>
       <div className="container-fluid">
-        <Link className="ps-3 py-2">
-          <img src={kmslogo} width="180" height="60" />
+        <Link className="ps-1 py-2">
+          <img src={kmslogo} width="180" height="45" />
         </Link>
       </div>
     </Navbar>
@@ -17,6 +17,6 @@ export default function BoardNav() {
 
 const Navbar = styled.div`
   width: 100%;
-  padding: 2%;
+  padding: 1%;
   border-bottom: 0.11rem solid lightgrey;
 `;

@@ -10,18 +10,24 @@ export default function KanBoard() {
     >
       <BoardNav />
       <div
-        className="App_boards_outer mtauto d-flex  flex-fill justify-content-center"
+        className="App_boards_outer mtauto d-flex  flex-fill"
         style={{
           overflowX: "auto",
           width: "100%",
-          overflowY: "auto",
-          height: "100%",
         }}
       >
         <div
           className="App_boards d-flex flex-column flex-md-row flex-lg-row gap-4 p-3 "
           style={{ minWidth: "min-content", height: "min-content" }}
         >
+          <Column />
+          <Column />
+          <Column />
+          <Column />
+          <Column />
+          <Column />
+          <Column />
+          <Column />
           <Column />
           <Column />
           <Column />
