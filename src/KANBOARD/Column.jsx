@@ -12,8 +12,10 @@ export default function Column() {
 
   var id = Date.now;
 
+  const [saveCard, setsaveCard] = useState([]);
+
   const [newCard, setnewCard] = useState({
-    id: Date.now,
+    id: id,
     title: "",
     description: "",
   });
@@ -24,7 +26,15 @@ export default function Column() {
     }
 
     if (newCard.title && newCard.description) {
-      localStorage.setItem("task", JSON.stringify(newCard));
+      const data = {
+        email: localStorage.getItem("user"),
+        title: newCard.title,
+        description: newCard.description,
+      };
+      console.log(data);
+      setsaveCard([...saveCard, data]);
+      console.log(saveCard);
+      localStorage.setItem("task", JSON.stringify(saveCard));
       setaddCard(false);
     }
   };
