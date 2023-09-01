@@ -1,18 +1,20 @@
 import React from "react";
 import { CheckSquare, Clock, MoreHorizontal } from "react-feather";
-import Chip from "./Chip";
 
 export default function Card() {
   return (
     <div className="card p-2">
       <div className="card_top d-flex align-items-center my-3">
-        <div className="card_lable me-auto d-flex flex-row gap-1">
-          <Chip title="Urgent" color="red" />
-          <Chip close title="Urgent" color="red" />
+        <div className="card_lable me-auto d-flex flex-row gap-1 fs-2 fw-bold">
+          Card Title
         </div>
         <MoreHorizontal />
       </div>
-      <div className="task_titel p-2 fs-4 fw-bold">Hello World</div>
+      <div className="task_titel p-2">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque ea
+        reprehenderit earum deleniti tempore, quidem unde possimus quis error
+        eum in fuga rerum?
+      </div>
       <div className="bottom d-flex flex-row align-items-center mt-3">
         <div className="date me-auto">
           <Clock />
