@@ -10,12 +10,9 @@ export default function Column() {
     setaddCard(true);
   };
 
-  var id = Date.now;
-
   const [saveCard, setsaveCard] = useState([]);
 
   const [newCard, setnewCard] = useState({
-    id: id,
     title: "",
     description: "",
   });
@@ -27,7 +24,6 @@ export default function Column() {
 
     if (newCard.title && newCard.description) {
       const data = {
-        email: localStorage.getItem("user"),
         title: newCard.title,
         description: newCard.description,
       };
@@ -41,7 +37,7 @@ export default function Column() {
 
   return (
     <div
-      className="Column_main d-flex flex-column gap-2"
+      className="Column_main d-flex flex-column gap-2 "
       style={{ width: "300px", minWidth: "min-content" }}
     >
       <div className="Column_top d-flex" style={{ zIndex: 1 }}>
@@ -53,7 +49,7 @@ export default function Column() {
         </button>
       </div>
       <div
-        className="ColunCard bg-light d-flex flex-row flex-md-column flex-lg-column p-1  gap-2 border-2 border-bottom"
+        className="ColunCard bg-light d-flex flex-row flex-md-column flex-lg-column p-1  gap-2 border-2 border-bottom custom-scroll"
         style={{
           height: "75vh",
           overflowY: "auto",
