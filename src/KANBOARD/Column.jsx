@@ -62,6 +62,9 @@ export default function Column(props) {
             card={item}
             removeCard={props.removeCard}
             column_id={props.column_id}
+            setnewCard={setaddCard}
+            setaddCard={setaddCard}
+            createCard={createCard}
           />
         ))}
       </div>

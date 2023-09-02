@@ -29,7 +29,7 @@ export default function Editable(props) {
                 setnewCard({ ...newCard, title: e.target.value });
               }}
             >
-              {props.title}
+              {/*  */}
             </input>
           </h1>
           <button
@@ -49,7 +49,7 @@ export default function Editable(props) {
               setnewCard({ ...newCard, description: e.target.value });
             }}
           >
-            {props.description}
+            {/* {props.description} */}
           </textarea>
         </div>
         <div className="modal-footer flex-column align-items-stretch w-100 h-25 gap-2 pb-2 border-top-0">

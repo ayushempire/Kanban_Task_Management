@@ -62,12 +62,15 @@ export default function KanBoard() {
 
   const removeCard = (cid, bid) => {
     const bindex = column.findIndex((item) => item.id === bid);
-    if (bindex < 0) return;
+    if (bindex < 0) {
+      return;
+    }
 
-    const cindex = column[bindex].cards.findIndex(
-      (item) => item.card_id === cid
-    );
-    if (cindex < 0) return;
+    console.log(bindex);
+    const cindex = column[bindex].cards.findIndex((item) => item.id === cid);
+    if (cindex < 0) {
+      console.log("hello");
+    }
 
     const tempColumn = [...column];
     tempColumn[bindex].cards.splice(cindex, 1);
