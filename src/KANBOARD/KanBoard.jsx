@@ -6,19 +6,73 @@ export default function KanBoard() {
   // state for columns
   const [column, setcolumn] = useState([
     {
-      id: Date.now() + Math.random() * 2,
+      id: 1,
       column_title: "To do",
-      tsks: [],
+
       cards: [
-        {
-          card_id: Date.now() + Math.random() * 4,
-          card_title: "card1",
-          desc: "kanban app",
-          date: "",
-        },
+        // {
+        //   // card_id: Date.now() + Math.random() * 4,
+        //   // card_title: "",
+        //   // desc: "",
+        //   // date: "",
+        // },
+      ],
+    },
+    {
+      id: 2,
+      column_title: "Doing",
+      cards: [
+        // {
+        //   card_id: Date.now() + Math.random() * 4,
+        //   card_title: "",
+        //   desc: "",
+        //   date: "",
+        // },
+      ],
+    },
+    {
+      id: 3,
+      column_title: "Done",
+      cards: [
+        // {
+        //   card_id: Date.now() + Math.random() * 4,
+        //   card_title: "",
+        //   desc: "",
+        //   date: "",
+        // },
       ],
     },
   ]);
+
+  const addNewCard = (title, desc, bid) => {
+    const card = {
+      id: Date.now() + Math.random(),
+      card_title: title,
+      date: "",
+      desc: desc,
+    };
+
+    const index = column.findIndex((item) => item.id === bid);
+    if (index < 0) return;
+
+    const tempColumn = [...column];
+    tempColumn[index].cards.push(card);
+    setcolumn(tempColumn);
+  };
+
+  const removeCard = (cid, bid) => {
+    const bindex = column.findIndex((item) => item.id === bid);
+    if (bindex < 0) return;
+
+    const cindex = column[bindex].cards.findIndex(
+      (item) => item.card_id === cid
+    );
+    if (cindex < 0) return;
+
+    const tempColumn = [...column];
+    tempColumn[bindex].cards.splice(cindex, 1);
+    setcolumn(tempColumn);
+  };
 
   return (
     <div
@@ -38,7 +92,13 @@ export default function KanBoard() {
           style={{ minWidth: "min-content", height: "min-content" }}
         >
           {column.map((item) => (
-            <Column key={item.id} column={item} />
+            <Column
+              key={item.id}
+              column={item}
+              column_id={item.id}
+              addNewCard={addNewCard}
+              removeCard={removeCard}
+            />
           ))}
         </div>
       </div>
