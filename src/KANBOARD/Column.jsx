@@ -4,7 +4,7 @@ import { MoreHorizontal, PlusCircle } from "react-feather";
 import "./Column.css";
 import Card from "./Card";
 
-export default function Column() {
+export default function Column(props) {
   const [addCard, setaddCard] = useState(false);
   const addnewCard = () => {
     setaddCard(true);
@@ -42,7 +42,8 @@ export default function Column() {
     >
       <div className="Column_top d-flex" style={{ zIndex: 1 }}>
         <div className="Column_title fw-bold flex-fill ">
-          To do <span style={{ color: "grey" }}> 2</span>
+          {props.column?.column_title}
+          <span style={{ color: "grey" }}> {props.column?.cards?.length}</span>
         </div>
         <button type="button" className="btn border-0" onClick={addnewCard}>
           <PlusCircle />
@@ -64,6 +65,7 @@ export default function Column() {
               <h1 className="modal-title fs-5 border-0  ">
                 <input
                   type="text"
+                  autoFocus
                   placeholder="Title"
                   className="w-75"
                   name="header"
@@ -80,10 +82,10 @@ export default function Column() {
               ></button>
             </div>
             <div className="modal-body py-2 w-100 h-100">
-              <input
+              <textarea
                 type="text"
                 placeholder="description"
-                className="pb-5"
+                className="pb-5 w-100 custom-scroll"
                 name="description"
                 value={setnewCard.description}
                 onChange={(e) => {
@@ -104,9 +106,9 @@ export default function Column() {
         ) : (
           ""
         )}
-        <Card />
-        <Card />
-        <Card />
+        {props.column?.cards?.map((item) => (
+          <Card key={item.id} card={item} />
+        ))}
       </div>
     </div>
   );
