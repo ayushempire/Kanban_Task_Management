@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import BoardNav from "./BoardNav";
 import Column from "./Column";
 
+// import { useMouseSensor }  "react-beautiful-dnd";
+
 export default function KanBoard() {
   // state for columns
   const [column, setcolumn] = useState([
@@ -44,6 +46,24 @@ export default function KanBoard() {
     },
   ]);
 
+  // //  ! const for dragable
+  // const [target, settarget] = useState({
+  //   cid: "",
+  //   bid: "",
+  // });
+
+  // useEffect(() => {
+  //   let init;
+  //   if (localStorage.getItem("board") === null) {
+  //     init = [];
+  //   } else {
+  //     init = JSON.parse(localStorage.getItem("board"));
+  //     console.log(init);
+  //     setcolumn(init);
+  //     console.log(column);
+  //   }
+  // }, []);
+
   const addNewCard = (title, desc, bid) => {
     const card = {
       id: Date.now() + Math.random(),
@@ -67,7 +87,7 @@ export default function KanBoard() {
     }
 
     console.log(bindex);
-    const cindex = column[bindex].cards.findIndex((item) => item.id === cid);
+    const cindex = column[bindex].cards?.findIndex((item) => item.id === cid);
     if (cindex < 0) {
       console.log("hello");
     }
@@ -76,6 +96,46 @@ export default function KanBoard() {
     tempColumn[bindex].cards.splice(cindex, 1);
     setcolumn(tempColumn);
   };
+
+  // // todo: function for dragable
+
+  // const handleDragEnd = (cid, bid) => {
+  //   let s_bindex = column.findIndex((item) => item.id === bid);
+  //   if (s_bindex < 0) return;
+
+  //   let s_cindex = column[s_bindex].cards?.findIndex((item) => item.id === cid);
+  //   if (s_cindex < 0) return;
+
+  //   let t_bindex = column.findIndex((item) => item.id === target.bid);
+  //   if (t_bindex < 0) return;
+
+  //   let t_cindex = column[t_bindex].cards?.findIndex(
+  //     (item) => item.id === target.cid
+  //   );
+  //   if (t_cindex < 0) return;
+
+  //   const tempcolumn = [...column];
+
+  //   const tempCard = tempcolumn[s_bindex].cards[s_cindex];
+
+  //   tempcolumn[s_bindex].cards?.slice(s_cindex, 1);
+  //   setcolumn(tempcolumn);
+
+  //   tempcolumn[t_bindex].cards?.splice(t_cindex, 0, tempCard);
+
+  //   setcolumn(tempcolumn);
+  // };
+
+  // const handleDragEnter = (cid, bid) => {
+  //   settarget({
+  //     cid: cid,
+  //     bid: bid,
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   localStorage.setItem("board", JSON.stringify(column));
+  // }, [column]);
 
   return (
     <div
@@ -101,6 +161,8 @@ export default function KanBoard() {
               column_id={item.id}
               addNewCard={addNewCard}
               removeCard={removeCard}
+              // handleDragEnter={handleDragEnter}
+              // handleDragEnd={handleDragEnd}
             />
           ))}
         </div>

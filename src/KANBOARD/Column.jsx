@@ -4,6 +4,7 @@ import { MoreHorizontal, PlusCircle } from "react-feather";
 import "./Column.css";
 import Card from "./Card";
 import Editable from "./Editable";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 export default function Column(props) {
   const [addCard, setaddCard] = useState(false);
@@ -40,34 +41,60 @@ export default function Column(props) {
           <PlusCircle />
         </button>
       </div>
-      <div
-        className="ColunCard bg-light d-flex flex-row flex-md-column flex-lg-column p-1  gap-2 border-2 border-bottom custom-scroll"
-        style={{
-          height: "75vh",
-          overflowY: "auto",
-        }}
-      >
-        {addCard || props.column?.cards?.length === 0 ? (
-          <Editable
-            setnewCard={setaddCard}
-            setaddCard={setaddCard}
-            createCard={createCard}
-          />
-        ) : (
-          ""
-        )}
-        {props.column?.cards?.map((item) => (
-          <Card
-            key={item.id}
-            card={item}
-            removeCard={props.removeCard}
-            column_id={props.column_id}
-            setnewCard={setaddCard}
-            setaddCard={setaddCard}
-            createCard={createCard}
-          />
-        ))}
-      </div>
+      <DragDropContext>
+        <Droppable droppableId={props.column_title}>
+          {(provided) => (
+            <div
+              className="ColunCard bg-light d-flex flex-row flex-md-column flex-lg-column p-1  gap-2 border-2 border-bottom custom-scroll"
+              style={{
+                height: "75vh",
+                overflowY: "auto",
+              }}
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              <div>
+                {addCard || props.column?.cards?.length === 0 ? (
+                  <Editable
+                    setnewCard={setaddCard}
+                    setaddCard={setaddCard}
+                    createCard={createCard}
+                  />
+                ) : (
+                  ""
+                )}
+                {props.column?.cards?.map((item, index) => (
+                  <Draggable
+                    key={item.card_title}
+                    draggableId={item.card_title}
+                    index={index}
+                  >
+                    {(provided) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <Card
+                          key={item.id}
+                          card={item}
+                          removeCard={props.removeCard}
+                          column_id={props.column_id}
+                          setnewCard={setaddCard}
+                          setaddCard={setaddCard}
+                          createCard={createCard}
+                          handleDragEnter={props.handleDragEnter}
+                          handleDragEnd={props.handleDragEnd}
+                        />
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+              </div>
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 }

@@ -14,7 +14,12 @@ export default function Card(props) {
 
   return (
     <>
-      <div className="card p-2">
+      <div
+        className="card p-2"
+        draggable="true"
+        onDragEnd={() => props.handleDragEnter(props.card?.id, props.column_id)}
+        onDragEnter={() => props.handleDragEnd(props.card?.id, props.column_id)}
+      >
         <div className="card_top d-flex align-items-center my-3">
           <div className="card_lable me-auto d-flex flex-row gap-1 fs-2 fw-bold">
             {props.card?.card_title}
